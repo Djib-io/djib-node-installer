@@ -1,0 +1,12 @@
+[Unit]
+Description=Djib Setup API
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/var/djib/api
+ExecStart=python3.10 /var/djib/api/main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

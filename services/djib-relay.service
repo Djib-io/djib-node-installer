@@ -1,0 +1,12 @@
+[Unit]
+Description=Djib Relay
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/var/djib/relay
+ExecStart=python3.10 /var/djib/relay/main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

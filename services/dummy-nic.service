@@ -1,0 +1,9 @@
+[Unit]
+Description=Configure dummy NIC
+After=network.target
+
+[Service]
+ExecStart=/sbin/ip addr add DJIBIPHOST dev lo
+
+[Install]
+WantedBy=multi-user.target
