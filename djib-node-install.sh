@@ -52,6 +52,7 @@ Sample options for setup a Djib Node server
 SUPPORT:
     Community: https://t.me/DjibTech
          Docs: https://docs.djib.io/node-install
+     Supports: https://discord.gg/PpZgKJkKpb
 
 HERE
 }
@@ -392,6 +393,8 @@ need_ppa() {
 
 
 install_ssl() {
+  sudo apt-get install python3-pkg-resources -y
+  sudo apt-get install --reinstall python3-pkg-resources -y
   sudo apt install certbot python3-certbot-nginx -y
   sudo apt-get install --reinstall python3-pkg-resources -y
 }
