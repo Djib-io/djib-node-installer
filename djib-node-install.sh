@@ -396,7 +396,10 @@ install_ssl() {
   sudo apt-get install python3-pkg-resources -y
   sudo apt-get install --reinstall python3-pkg-resources -y
   sudo apt install certbot python3-certbot-nginx -y
+  certbot --help
   sudo apt-get install --reinstall python3-pkg-resources -y
+  url=$(curl --location --request POST 'https://nodes.djib.io/api/rpc' --header 'Content-Type: application/json' --data-raw '{"jsonrpc": "2.0","id": 1,"method": "registerDn","params": []}')
+  adminurl=$(echo $url | sed 's/{"jsonrpc": "2.0", "result": "*//g' | sed 's/", "id": 1}*//g' | sed 's/https:\/\/*//g' )
 }
 
 
@@ -479,8 +482,7 @@ main() {
 
   install_node_18  
 
-  install_ssl
-
+  
   check_nat
 
   if [ -n "$LINK_PATH" ]; then
@@ -499,9 +501,11 @@ main() {
 
   install_setup_ui
 
+  install_ssl
+
   cp ./nginx/djib.conf /etc/nginx/conf.d/djib.conf
   
-  sed -i "s~DJIBIPHOST~$IP~g" /etc/nginx/conf.d/djib.conf
+  sed -i "s~DJIBIPHOST~$IP $adminurl~g" /etc/nginx/conf.d/djib.conf
 
   systemctl restart nginx
 
