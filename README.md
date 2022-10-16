@@ -1,4 +1,4 @@
-![Image of Djuno Logo](./docs/logo.svg) 
+![Image of Djuno Logo](./assets/logo.svg) 
 
 Universal data storage parachain providing interoperability and powering the Web3 data layer
 
@@ -28,3 +28,6 @@ cd djib-node-installer
 ### Node Setup (Staking)
 
 
+### How rewards are calculated
+
+### License
